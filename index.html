@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sundry Apps – Apps for everyday life</title>
+    <meta name="description"
+        content="Sundry Apps builds simple, focused mobile apps. Meet Settlr and Sundry — apps for splitting expenses and trading items." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #fafafa;
+            --text: #111111;
+            --muted: #6b7280;
+            --subtle: #374151;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ── HEADER ── */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 36px 40px;
+            width: 100%;
+        }
+
+        .wordmark {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #374151;
+        }
+
+        .wordmark strong {
+            color: #111111;
+            font-weight: 800;
+        }
+
+        /* ── APP CARDS ── */
+        .apps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 820px;
+            width: 100%;
+            padding: 0 28px;
+            margin: 48px auto 100px;
+        }
+
+        .app-card {
+            position: relative;
+            border-radius: 28px;
+            padding: 44px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Settlr card */
+        .app-card.settlr {
+            background: #eef2ff;
+            border: 1.5px solid #c7d2fe;
+        }
+
+        .app-card.settlr:hover {
+            box-shadow: 0 12px 48px rgba(99, 102, 241, 0.18);
+        }
+
+        /* Sundry card */
+        .app-card.sundry {
+            background: #fffbeb;
+            border: 1.5px solid #fde68a;
+        }
+
+        .app-card.sundry:hover {
+            box-shadow: 0 12px 48px rgba(245, 166, 35, 0.18);
+        }
+
+        .app-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .app-icon img {
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .app-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .settlr .app-name {
+            color: #3730a3;
+        }
+
+        .sundry .app-name {
+            color: #92400e;
+        }
+
+        .app-tagline {
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 14px;
+        }
+
+        .settlr .app-tagline {
+            color: #6366f1;
+        }
+
+        .sundry .app-tagline {
+            color: #d97706;
+        }
+
+        .app-desc {
+            font-size: 0.95rem;
+            color: var(--subtle);
+            line-height: 1.65;
+            margin-bottom: 28px;
+            max-width: 280px;
+            flex: 1;
+        }
+
+        .app-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .chip {
+            border-radius: 999px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .settlr .chip {
+            background: #e0e7ff;
+            border: 1px solid #a5b4fc;
+            color: #3730a3;
+        }
+
+        .sundry .chip {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            color: #92400e;
+        }
+
+        .app-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 12px 24px;
+            text-decoration: none;
+            transition: opacity 0.18s, transform 0.18s;
+        }
+
+        .app-cta:hover {
+            opacity: 0.88;
+            transform: scale(1.02);
+        }
+
+        .settlr .app-cta {
+            background: linear-gradient(135deg, #4338ca, #6366f1);
+            color: #fff;
+        }
+
+        .sundry .app-cta {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            color: #fff;
+        }
+
+        .app-cta svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            color: var(--muted);
+            width: 100%;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 480px) {
+            header {
+                padding: 24px 20px;
+            }
+
+            .apps {
+                padding: 0 16px;
+            }
+
+            .app-card {
+                padding: 36px 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <span class="wordmark"><strong>Sundry</strong> Apps</span>
+    </header>
+
+    <div class="apps">
+
+        <!-- Settlr -->
+        <div class="app-card settlr">
+            <div class="app-icon"><img src="settlr-icon.png" alt="Settlr app icon" /></div>
+            <div class="app-name">Settlr</div>
+            <div class="app-tagline">Split expenses</div>
+            <p class="app-desc">
+                Track shared expenses across a group, split and see live balances for
+                everyone.
+            </p>
+            <div class="app-features">
+                <span class="chip">Group expenses</span>
+                <span class="chip">Smart splits</span>
+                <span class="chip">Instant balances</span>
+            </div>
+            <a href="https://settlr.sundryapps.tech" class="app-cta">
+                Visit Settlr
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Sundry -->
+        <div class="app-card sundry">
+            <div class="app-icon"><img src="sundry-icon.png" alt="Sundry app icon" /></div>
+            <div class="app-name">Sundry</div>
+            <div class="app-tagline">Buy · Sell · Trade</div>
+            <p class="app-desc">
+                A unique local marketplace for buying, selling, and trading items with others near you. Turn unused
+                stuff into something better.
+            </p>
+            <div class="app-features">
+                <span class="chip">Local listings</span>
+                <span class="chip">Buy &amp; sell</span>
+                <span class="chip">Trade items</span>
+            </div>
+            <a href="https://sundry.sundryapps.tech" class="app-cta">
+                Visit Sundry
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sundry Apps. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
